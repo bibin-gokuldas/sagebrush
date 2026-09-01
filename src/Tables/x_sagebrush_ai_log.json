@@ -1,0 +1,16 @@
+{
+  "name": "x_sagebrush_ai_log",
+  "label": "SAGEBRUSH AI Log",
+  "extends": "",
+  "fields": [
+    { "name": "session",        "type": "reference", "ref_table": "x_sagebrush_session", "label": "Session" },
+    { "name": "provider",       "type": "choice",    "choices": ["nowassist","claude","openai"], "label": "Provider Used", "mandatory": true },
+    { "name": "domain",         "type": "string",    "label": "Domain" },
+    { "name": "fallback_used",  "type": "boolean",   "label": "Fallback Triggered", "default": false },
+    { "name": "token_count",    "type": "integer",   "label": "Token Count" },
+    { "name": "response_ms",    "type": "integer",   "label": "Response Time (ms)" },
+    { "name": "success",        "type": "boolean",   "label": "Success", "mandatory": true },
+    { "name": "error_message",  "type": "string",    "max_length": 1024, "label": "Error" },
+    { "name": "prompt_hash",    "type": "string",    "max_length": 64,   "label": "Prompt Hash (masked)" }
+  ]
+}

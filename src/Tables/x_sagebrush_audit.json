@@ -1,0 +1,13 @@
+{
+  "name": "x_sagebrush_audit",
+  "label": "SAGEBRUSH Audit Log",
+  "extends": "",
+  "fields": [
+    { "name": "session",        "type": "reference", "ref_table": "x_sagebrush_session", "label": "Session" },
+    { "name": "user_sys_id",    "type": "reference", "ref_table": "sys_user", "label": "User", "mandatory": true },
+    { "name": "event_type",     "type": "choice",    "choices": ["invoked","ai_call","instance_scan","dq_scan","design_generated","cross_scope_read"], "label": "Event Type", "mandatory": true },
+    { "name": "detail",         "type": "string",    "max_length": 4096, "label": "Detail" },
+    { "name": "table_name",     "type": "string",    "label": "Table" },
+    { "name": "record_count",   "type": "integer",   "label": "Record Count" }
+  ]
+}

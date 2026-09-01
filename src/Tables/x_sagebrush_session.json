@@ -1,0 +1,14 @@
+{
+  "name": "x_sagebrush_session",
+  "label": "SAGEBRUSH Session",
+  "extends": "task",
+  "fields": [
+    { "name": "user_sys_id",    "type": "reference", "ref_table": "sys_user",  "label": "User",         "mandatory": true },
+    { "name": "channel",        "type": "choice",    "choices": ["nowassist","virtualagent","phone"], "label": "Channel", "mandatory": true },
+    { "name": "state",          "type": "choice",    "choices": ["active","idle","closed"], "label": "State", "default": "active" },
+    { "name": "intent",         "type": "choice",    "choices": ["none","solution_design","data_quality"], "label": "Current Intent", "default": "none" },
+    { "name": "hld_article",    "type": "reference", "ref_table": "kb_knowledge", "label": "HLD Article" },
+    { "name": "lld_article",    "type": "reference", "ref_table": "kb_knowledge", "label": "LLD Article" },
+    { "name": "context_json",   "type": "string",    "max_length": 65536, "label": "Context JSON" }
+  ]
+}

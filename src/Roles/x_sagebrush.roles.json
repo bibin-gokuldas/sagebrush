@@ -1,0 +1,17 @@
+[
+  {
+    "name": "x_sagebrush.architect",
+    "description": "Full SAGEBRUSH access — Solution Design, DQ all domains, AI config, audit log read",
+    "includes_roles": []
+  },
+  {
+    "name": "x_sagebrush.admin",
+    "description": "DQ checks for licensed domain, view designs, no AI provider config",
+    "includes_roles": ["x_sagebrush.viewer"]
+  },
+  {
+    "name": "x_sagebrush.viewer",
+    "description": "View DQ scores and remediation guidance for own domain only",
+    "includes_roles": []
+  }
+]

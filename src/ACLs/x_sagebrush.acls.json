@@ -1,0 +1,44 @@
+[
+  {
+    "table": "x_sagebrush_session",
+    "operation": "read",
+    "script": "answer = gs.hasRole('x_sagebrush.architect') || current.user_sys_id == gs.getUserID();"
+  },
+  {
+    "table": "x_sagebrush_session",
+    "operation": "write",
+    "script": "answer = gs.hasRole('x_sagebrush.architect') || current.user_sys_id == gs.getUserID();"
+  },
+  {
+    "table": "x_sagebrush_audit",
+    "operation": "read",
+    "script": "answer = gs.hasRole('x_sagebrush.architect');"
+  },
+  {
+    "table": "x_sagebrush_audit",
+    "operation": "write",
+    "script": "answer = false;"
+  },
+  {
+    "table": "x_sagebrush_ai_log",
+    "operation": "read",
+    "script": "answer = gs.hasRole('x_sagebrush.architect');"
+  },
+  {
+    "table": "x_sagebrush_ai_log",
+    "operation": "write",
+    "script": "answer = false;"
+  },
+  {
+    "table": "sys_properties",
+    "field": "x_sagebrush.ai.claude.api_key",
+    "operation": "read",
+    "script": "answer = gs.hasRole('x_sagebrush.architect');"
+  },
+  {
+    "table": "sys_properties",
+    "field": "x_sagebrush.ai.openai.api_key",
+    "operation": "read",
+    "script": "answer = gs.hasRole('x_sagebrush.architect');"
+  }
+]

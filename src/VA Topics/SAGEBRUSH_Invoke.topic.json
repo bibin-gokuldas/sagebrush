@@ -1,0 +1,26 @@
+{
+  "name": "SAGEBRUSH_Invoke",
+  "label": "SAGEBRUSH Invocation",
+  "description": "Triggers SAGEBRUSH agent when user says the keyword",
+  "trigger_type": "nlu",
+  "nlu_utterances": [
+    "SAGEBRUSH",
+    "sage brush",
+    "launch sagebrush",
+    "sagebrush agent",
+    "hey sagebrush"
+  ],
+  "nodes": [
+    {
+      "type": "script",
+      "name": "Invoke SAGEBRUSH",
+      "script": "var handler = new SAGEBRUSHConversationHandler(); var result = handler.handleInvocation(session.getUserId(), 'virtualagent'); varecord.put('sagebrush_session_id', result.sessionId); output = result.greeting;"
+    },
+    {
+      "type": "text",
+      "name": "Greeting Output",
+      "text": "${sagebrush_greeting}"
+    }
+  ],
+  "active": true
+}
