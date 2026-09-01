@@ -210,7 +210,7 @@ SAGEBRUSHAIProvider.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -270,7 +270,7 @@ SAGEBRUSHAuditLogger.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -394,7 +394,7 @@ SAGEBRUSHConversationHandler.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -489,7 +489,7 @@ SAGEBRUSHDataMasker.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -829,7 +829,7 @@ SAGEBRUSHDesignWriter.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -942,7 +942,7 @@ SAGEBRUSHDialogflowHandler.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1049,7 +1049,7 @@ SAGEBRUSHDQAIEngine.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1186,7 +1186,7 @@ SAGEBRUSHDQEngine.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1279,7 +1279,7 @@ SAGEBRUSHDQRemediator.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1451,7 +1451,7 @@ SAGEBRUSHDQRuleEngine.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1562,7 +1562,7 @@ SAGEBRUSHDQScorer.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -1811,7 +1811,7 @@ SAGEBRUSHInstanceScanner.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -2016,7 +2016,7 @@ SAGEBRUSHOOBMapper.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -2247,7 +2247,7 @@ SAGEBRUSHRequirementExtractor.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -2339,7 +2339,7 @@ SAGEBRUSHRoleHelper.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
@@ -2474,7 +2474,7 @@ SAGEBRUSHSessionManager.prototype = {
     <access>public</access>
     <client_callable>false</client_callable>
     <callers_access>caller_tracking</callers_access>
-    <sys_scope display_value="SAGEBRUSH - AI Architect Agent">x_snc_sagebrush</sys_scope>
+    <sys_scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
     <sys_class_name>sys_script_include</sys_class_name>
   </sys_script_include>
 
