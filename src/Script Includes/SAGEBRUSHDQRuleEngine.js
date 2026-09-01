@@ -97,16 +97,14 @@ SAGEBRUSHDQRuleEngine.prototype = {
     },
 
     _executeQueryCheck: function(check, runSysId) {
-        var results = [];
-        var offset  = 0;
+        var results  = [];
+        var offset   = 0;
 
         do {
             var gr = new GlideRecord(check.target_table);
             gr.addEncodedQuery(check.check_query);
-            gr.setLimit(this.CHUNK_SIZE);
+            gr.chooseWindow(offset, offset + this.CHUNK_SIZE);
             gr.query();
-
-            if (gr.getRowCount() === 0) { break; }
 
             var chunkSize = 0;
             while (gr.next()) {
