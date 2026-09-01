@@ -1,0 +1,19 @@
+{
+  "name": "x_sagebrush_dq_result",
+  "label": "SAGEBRUSH DQ Result",
+  "extends": "",
+  "fields": [
+    { "name": "dq_run",          "type": "reference", "ref_table": "x_sagebrush_dq_run",   "label": "DQ Run",      "mandatory": true },
+    { "name": "dq_check",        "type": "reference", "ref_table": "x_sagebrush_dq_check", "label": "DQ Check",    "mandatory": true },
+    { "name": "domain",          "type": "choice",    "choices": ["itsm","itom","grc","bcm","csm","hrsd","foundational"], "label": "Domain" },
+    { "name": "dimension",       "type": "choice",    "choices": ["completeness","accuracy","consistency","referential","staleness","duplicate","compliance"], "label": "Dimension" },
+    { "name": "severity",        "type": "choice",    "choices": ["critical","high","medium","low"], "label": "Severity" },
+    { "name": "table_name",      "type": "string",    "label": "Table" },
+    { "name": "record_sys_id",   "type": "string",    "max_length": 32,   "label": "Record Sys ID" },
+    { "name": "result_message",  "type": "string",    "max_length": 2048, "label": "Result Message" },
+    { "name": "detected_by",     "type": "choice",    "choices": ["rule","ai"],              "label": "Detected By" },
+    { "name": "status",          "type": "choice",    "choices": ["open","acknowledged","remediated","suppressed"], "label": "Status", "default": "open" },
+    { "name": "assigned_to",     "type": "reference", "ref_table": "sys_user_group",         "label": "Assigned Group" },
+    { "name": "remediation_hint","type": "string",    "max_length": 4096, "label": "Remediation Hint" }
+  ]
+}

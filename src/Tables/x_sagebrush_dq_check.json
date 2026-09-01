@@ -1,0 +1,17 @@
+{
+  "name": "x_sagebrush_dq_check",
+  "label": "SAGEBRUSH DQ Check",
+  "extends": "",
+  "fields": [
+    { "name": "check_name",    "type": "string",  "label": "Check Name",    "mandatory": true },
+    { "name": "domain",        "type": "choice",  "choices": ["itsm","itom","grc","bcm","csm","hrsd","foundational"], "label": "Domain", "mandatory": true },
+    { "name": "dimension",     "type": "choice",  "choices": ["completeness","accuracy","consistency","referential","staleness","duplicate","compliance"], "label": "Dimension", "mandatory": true },
+    { "name": "target_table",  "type": "string",  "label": "Target Table",  "mandatory": true },
+    { "name": "check_query",   "type": "string",  "max_length": 4096, "label": "GlideRecord Encoded Query" },
+    { "name": "check_script",  "type": "string",  "max_length": 8192, "label": "Custom Check Script (override)" },
+    { "name": "severity",      "type": "choice",  "choices": ["critical","high","medium","low"], "label": "Severity", "mandatory": true },
+    { "name": "message_template","type": "string","max_length": 1024, "label": "Result Message Template" },
+    { "name": "active",        "type": "boolean", "label": "Active", "default": true },
+    { "name": "check_type",    "type": "choice",  "choices": ["query","script"], "label": "Check Type", "default": "query" }
+  ]
+}
