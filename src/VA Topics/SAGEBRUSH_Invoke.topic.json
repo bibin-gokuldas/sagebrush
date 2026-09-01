@@ -14,12 +14,7 @@
     {
       "type": "script",
       "name": "Invoke SAGEBRUSH",
-      "script": "var handler = new SAGEBRUSHConversationHandler(); var result = handler.handleInvocation(session.getUserId(), 'virtualagent'); varecord.put('sagebrush_session_id', result.sessionId); output = result.greeting;"
-    },
-    {
-      "type": "text",
-      "name": "Greeting Output",
-      "text": "${sagebrush_greeting}"
+      "script": "var handler = new SAGEBRUSHConversationHandler(); var result = handler.handleInvocation(session.getUserId(), 'virtualagent'); vaVars.put('sagebrush_session_id', result.sessionId); output = result.greeting;"
     }
   ],
   "active": true
