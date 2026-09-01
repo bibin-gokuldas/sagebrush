@@ -50,4 +50,5 @@ capabilities.forEach(function(cap) {
     inserted++;
 });
 
-gs.info('SAGEBRUSH OOB Capabilities: ' + inserted + ' inserted, ' + skipped + ' skipped.');
+var log = new GSLog('x_sagebrush.fix', 'SAGEBRUSH_FixScript');
+log.info('SAGEBRUSH OOB Capabilities: ' + inserted + ' inserted, ' + skipped + ' skipped.');

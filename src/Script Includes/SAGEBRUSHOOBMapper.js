@@ -96,11 +96,19 @@ SAGEBRUSHOOBMapper.prototype = {
                         var aiMap = JSON.parse(jsonMatch[0]);
                         for (var j = 0; j < capabilities.length; j++) {
                             if (capabilities[j].capability_name === aiMap.capability_name) {
-                                bestCap = capabilities[j];
-                                bestCap._ai_config  = aiMap.config_needed;
-                                bestCap._ai_custom  = aiMap.custom_code;
-                                bestCap._ai_rationale = aiMap.rationale;
-                                bestScore = 60; // AI match is moderately confident
+                                bestCap = {
+                                    sys_id:          capabilities[j].sys_id,
+                                    capability_name: capabilities[j].capability_name,
+                                    description:     capabilities[j].description,
+                                    priority_level:  capabilities[j].priority_level,
+                                    license_tier:    capabilities[j].license_tier,
+                                    plugin_id:       capabilities[j].plugin_id,
+                                    keywords:        capabilities[j].keywords,
+                                    _ai_config:      aiMap.config_needed,
+                                    _ai_custom:      aiMap.custom_code,
+                                    _ai_rationale:   aiMap.rationale
+                                };
+                                bestScore = 60;
                                 break;
                             }
                         }
@@ -145,7 +153,7 @@ SAGEBRUSHOOBMapper.prototype = {
         var req = new GlideRecord(this.REQ_TABLE);
         if (req.get(reqSysId)) { req.setValue('oob_mapping', mapSysId); req.update(); }
 
-        return { capability_name: cap.capability_name, match_score: score, custom_code: cap._ai_custom || false, requirement_sys_id: reqSysId };
+        return { capability_name: cap.capability_name, match_score: score, config_needed: cap._ai_config || cap.config_needed || '', custom_code: cap._ai_custom || false, requirement_sys_id: reqSysId };
     },
 
     _getConfirmedRequirements: function(sessionId) {

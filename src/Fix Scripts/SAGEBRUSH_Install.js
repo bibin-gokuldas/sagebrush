@@ -79,4 +79,5 @@ privileges.forEach(function(p) {
     inserted++;
 });
 
-gs.info('SAGEBRUSH Install: ' + inserted + ' scope privileges created, ' + skipped + ' already existed.');
+var log = new GSLog('x_sagebrush.fix', 'SAGEBRUSH_FixScript');
+log.info('SAGEBRUSH Install: ' + inserted + ' scope privileges created, ' + skipped + ' already existed.');
