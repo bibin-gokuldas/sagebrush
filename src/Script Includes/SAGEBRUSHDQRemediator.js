@@ -47,10 +47,16 @@ SAGEBRUSHDQRemediator.prototype = {
         if (existingHint.length > 10) { return this._formatHintForRole(existingHint, userRole); }
 
         // Generate hint via AI
-        var prompt = 'You are a ServiceNow ' + (userRole === 'architect' ? 'developer' : 'admin') + '. ' +
+        var roleLabel    = userRole === 'architect' ? 'developer' : (userRole === 'admin' ? 'admin' : 'business user');
+        var roleInstruct = userRole === 'architect'
+            ? 'Include GlideRecord query example and fix script.'
+            : (userRole === 'admin'
+                ? 'Use plain language step-by-step instructions.'
+                : 'Explain in simple non-technical terms what the business user should do or who to contact.');
+        var prompt = 'You are a ServiceNow ' + roleLabel + '. ' +
             'Provide a concise remediation hint for this data quality issue. ' +
             'Issue: ' + message + '. Table: ' + table + '. Dimension: ' + dimension + '. Domain: ' + domain + '. ' +
-            (userRole === 'architect' ? 'Include GlideRecord query example and fix script.' : 'Use plain language step-by-step instructions.');
+            roleInstruct;
 
         var aiResult = this.ai.ask(prompt, {}, domain);
         var hint = aiResult.success ? aiResult.text : 'Please review and update the record to resolve this data quality issue.';
