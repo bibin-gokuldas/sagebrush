@@ -1,0 +1,34 @@
+{
+  "name": "SAGEBRUSH_DialogflowWebhook",
+  "label": "SAGEBRUSH Dialogflow CX Webhook",
+  "description": "IntegrationHub Inbound Webhook. Receives Dialogflow CX fulfillment calls, routes through SAGEBRUSHDialogflowHandler, returns JSON response. Configure the Dialogflow CX webhook URL to: https://<instance>.service-now.com/api/x_sagebrush/dialogflow_webhook",
+  "trigger": {
+    "type": "inbound_webhook",
+    "method": "POST",
+    "path": "/api/x_sagebrush/dialogflow_webhook",
+    "content_type": "application/json"
+  },
+  "steps": [
+    {
+      "name": "Read Webhook Secret Property",
+      "type": "script_action",
+      "script": "var secret = gs.getProperty('x_sagebrush.dialogflow.webhook_secret', ''); output = { secret: secret };",
+      "outputs": { "secret": "expectedSecret" }
+    },
+    {
+      "name": "Process Dialogflow Request",
+      "type": "script_action",
+      "script": "var handler = new SAGEBRUSHDialogflowHandler(); var incomingSecret = trigger.headers['x-webhook-secret'] || ''; var responseJson = handler.processRequest(trigger.body, incomingSecret, inputs.expectedSecret); output = { response_body: responseJson };",
+      "inputs": { "expectedSecret": "{{expectedSecret}}" },
+      "outputs": { "response_body": "responseBody" },
+      "on_error": "log_and_continue"
+    },
+    {
+      "name": "Return Webhook Response",
+      "type": "webhook_response",
+      "status_code": 200,
+      "content_type": "application/json",
+      "body": "{{responseBody}}"
+    }
+  ]
+}
