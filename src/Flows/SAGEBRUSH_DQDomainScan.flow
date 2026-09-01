@@ -1,0 +1,23 @@
+{
+  "name": "SAGEBRUSH_DQDomainScan",
+  "label": "SAGEBRUSH — Domain DQ Scan",
+  "description": "Reusable subflow for single-domain DQ scan. Called by conversation handler.",
+  "trigger": { "type": "subflow" },
+  "inputs": [
+    { "name": "session_sys_id", "type": "string" },
+    { "name": "domain",         "type": "string" }
+  ],
+  "outputs": [
+    { "name": "run_sys_id",  "type": "string" },
+    { "name": "dq_score",    "type": "decimal" },
+    { "name": "summary_text","type": "string" }
+  ],
+  "steps": [
+    {
+      "name": "Run Domain DQ",
+      "type": "script_action",
+      "script": "var engine = new SAGEBRUSHDQEngine(); var runId = engine.startRun(fd_data.session_sys_id, fd_data.domain); fd_data.run_sys_id = runId; var run = new GlideRecord('x_sagebrush_dq_run'); run.get(runId); fd_data.dq_score = parseFloat(run.getValue('dq_score') || '0'); fd_data.summary_text = engine.getSummary(runId, gs.getUserID());",
+      "on_error": "stop_and_log"
+    }
+  ]
+}
