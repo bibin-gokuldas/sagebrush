@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <calculation/>
+        <choice>0</choice>
+        <column_label>Severity</column_label>
+                <default_value/>
+        <element>severity</element>
+        <internal_type display_value="string">string</internal_type>
+        <mandatory>true</mandatory>
+        <max_length>20</max_length>
+        <name>x_snc_sagebrush_dq_check</name>
+                <reference/>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>93c8d9d71ffb42ad9216fdc58a1477ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_sagebrush_dq_check.severity</sys_name>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_dictionary_93c8d9d71ffb42ad9216fdc58a1477ac</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+    </sys_dictionary>
+</record_update>

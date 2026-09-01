@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_choice">
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>provider</element>
+        <inactive>false</inactive>
+        <label>Openai</label>
+        <language>en</language>
+        <name>x_snc_sagebrush_ai_log</name>
+        <sequence>200</sequence>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>f5c35e59552f457a9dddcc8483d67a7d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_choice_f5c35e59552f457a9dddcc8483d67a7d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+        <value>openai</value>
+    </sys_choice>
+</record_update>
