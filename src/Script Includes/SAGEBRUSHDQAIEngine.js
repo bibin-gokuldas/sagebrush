@@ -1,0 +1,94 @@
+/**
+ * @name SAGEBRUSHDQAIEngine
+ * @callable_from_other_scopes true
+ * @access public
+ * @scope x_sagebrush
+ */
+var SAGEBRUSHDQAIEngine = Class.create();
+SAGEBRUSHDQAIEngine.prototype = {
+
+    RESULT_TABLE: 'x_sagebrush_dq_result',
+    RUN_TABLE:    'x_sagebrush_dq_run',
+
+    initialize: function(dependencies) {
+        this.log    = new GSLog('x_sagebrush.dq.ai', 'SAGEBRUSHDQAIEngine');
+        this.ai     = (dependencies && dependencies.ai)     || new SAGEBRUSHAIProvider();
+        this.masker = (dependencies && dependencies.masker) || new SAGEBRUSHDataMasker();
+    },
+
+    /**
+     * Analyses statistical summaries of a DQ run for AI-detected anomalies.
+     * Never sends raw record data to external AI — uses masked statistical summaries only.
+     * @param {string} runSysId
+     * @returns {Number} count of AI anomalies added to x_sagebrush_dq_result
+     */
+    analyseRun: function(runSysId) {
+        var summary = this._buildStatisticalSummary(runSysId);
+        var maskedSummary = this.masker.mask(summary).maskedData;
+
+        var prompt = 'You are a ServiceNow data quality analyst. Review this statistical summary of a ServiceNow instance DQ scan. ' +
+            'Identify any patterns, anomalies, or concerns NOT already flagged as individual rule violations. ' +
+            'Respond with a JSON array of findings: [{ "domain": "...", "dimension": "...", "severity": "high|medium|low", "finding": "...", "recommendation": "..." }]. ' +
+            'If no additional anomalies found, return empty array []. ' +
+            'Statistical summary: ' + JSON.stringify(maskedSummary);
+
+        var aiResult = this.ai.ask(prompt, {}, 'itsm');
+        if (!aiResult.success) { return 0; }
+
+        try {
+            var jsonMatch = aiResult.text.match(/\[[\s\S]*\]/);
+            if (!jsonMatch) { return 0; }
+            var findings = JSON.parse(jsonMatch[0]);
+            return this._saveAIFindings(runSysId, findings);
+        } catch (e) {
+            this.log.warn('AI findings parse failed: ' + e.message);
+            return 0;
+        }
+    },
+
+    _buildStatisticalSummary: function(runSysId) {
+        var summary = { run_id: runSysId, domains: {} };
+
+        var result = new GlideRecord(this.RESULT_TABLE);
+        result.addQuery('dq_run', runSysId);
+        result.query();
+
+        while (result.next()) {
+            var domain    = result.getValue('domain') || 'unknown';
+            var severity  = result.getValue('severity') || 'low';
+            var dimension = result.getValue('dimension') || 'unknown';
+
+            if (!summary.domains[domain]) {
+                summary.domains[domain] = { total: 0, by_severity: {}, by_dimension: {} };
+            }
+            summary.domains[domain].total++;
+            summary.domains[domain].by_severity[severity]   = (summary.domains[domain].by_severity[severity]  || 0) + 1;
+            summary.domains[domain].by_dimension[dimension] = (summary.domains[domain].by_dimension[dimension] || 0) + 1;
+        }
+        return summary;
+    },
+
+    _saveAIFindings: function(runSysId, findings) {
+        var saved = 0;
+        for (var i = 0; i < findings.length; i++) {
+            var f = findings[i];
+            try {
+                var gr = new GlideRecord(this.RESULT_TABLE);
+                gr.initialize();
+                gr.setValue('dq_run',           runSysId);
+                gr.setValue('domain',           f.domain || 'unknown');
+                gr.setValue('dimension',        f.dimension || 'accuracy');
+                gr.setValue('severity',         f.severity || 'medium');
+                gr.setValue('result_message',   f.finding || '');
+                gr.setValue('remediation_hint', f.recommendation || '');
+                gr.setValue('detected_by',      'ai');
+                gr.setValue('status',           'open');
+                gr.insert();
+                saved++;
+            } catch (e) { this.log.warn('Failed to save AI finding: ' + e.message); }
+        }
+        return saved;
+    },
+
+    type: 'SAGEBRUSHDQAIEngine'
+};
