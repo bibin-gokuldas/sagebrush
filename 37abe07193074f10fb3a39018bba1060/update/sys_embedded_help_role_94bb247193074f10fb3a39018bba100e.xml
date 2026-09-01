@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>10</order>
+        <role display_value="x_snc_sagebrush.admin" name="x_snc_sagebrush.admin">d4bb247193074f10fb3a39018bba1007</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:55</sys_created_on>
+        <sys_id>94bb247193074f10fb3a39018bba100e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d4bb247193074f10fb3a39018bba1007</sys_name>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_embedded_help_role_94bb247193074f10fb3a39018bba100e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:55</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>
