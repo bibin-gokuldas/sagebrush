@@ -52,7 +52,7 @@ SAGEBRUSHConversationHandler.prototype = {
             this.session.updateIntent(sessionId, detectedIntent);
         }
 
-        var response = this._buildResponse(detectedIntent);
+        var response = this._buildResponse(detectedIntent, message, sessionData);
         return { response: response, intent: detectedIntent };
     },
 
@@ -75,15 +75,36 @@ SAGEBRUSHConversationHandler.prototype = {
         return 'none';
     },
 
-    _buildResponse: function(intent) {
+    _buildResponse: function(intent, message, sessionData) {
         switch (intent) {
             case 'solution_design':
                 return 'Great, let\'s work on a Solution Design. Tell me what you\'re trying to achieve — describe it in your own words, or share a document and I\'ll read it for you. What are you looking to build or improve?';
             case 'data_quality':
-                return 'Sure, I can run a Data Quality check. Which domain would you like me to check? Options are: ITSM, ITOM, GRC, BCM, CSM, HRSD, or Foundational data (users, departments, locations). You can also say "all" for a full instance scan.';
+                return this._buildDQResponse(message, sessionData);
             default:
                 return 'I can help you with Solution Design or Data Quality Checks. Which would you like to work on?';
         }
+    },
+
+    _buildDQResponse: function(message, sessionData) {
+        var lower = message ? message.toLowerCase() : '';
+        var domains = ['itsm', 'itom', 'grc', 'bcm', 'csm', 'hrsd', 'foundational'];
+        var selectedDomain = null;
+
+        for (var i = 0; i < domains.length; i++) {
+            if (lower.indexOf(domains[i]) !== -1) { selectedDomain = domains[i]; break; }
+        }
+        if (lower.indexOf('all') !== -1 || lower.indexOf('full') !== -1) { selectedDomain = 'all'; }
+
+        // No domain named yet — ask the user to choose
+        if (!selectedDomain) {
+            return 'Sure, I can run a Data Quality check. Which domain would you like me to check? Options are: ITSM, ITOM, GRC, BCM, CSM, HRSD, or Foundational data (users, departments, locations). You can also say "all" for a full instance scan.';
+        }
+
+        var engine  = new SAGEBRUSHDQEngine();
+        var runId   = engine.startRun(sessionData.sys_id, selectedDomain);
+        var summary = engine.getSummary(runId, gs.getUserID());
+        return summary;
     },
 
     type: 'SAGEBRUSHConversationHandler'
