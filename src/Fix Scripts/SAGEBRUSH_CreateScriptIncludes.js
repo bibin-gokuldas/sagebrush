@@ -44,7 +44,6 @@
             var req = new sn_ws.RESTMessageV2();
             req.setEndpoint(url);
             req.setHttpMethod('GET');
-            req.setMutualAuth(false);
             var resp    = req.execute();
             var status  = resp.getStatusCode();
             var content = resp.getBody();
