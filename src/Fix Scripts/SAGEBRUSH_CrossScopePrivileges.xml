@@ -4,7 +4,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20001</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>incident</target_table>
+    <name>incident</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -14,7 +14,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20002</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>problem</target_table>
+    <name>problem</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -24,7 +24,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20003</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>change_request</target_table>
+    <name>change_request</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -34,7 +34,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20004</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>change_task</target_table>
+    <name>change_task</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -44,7 +44,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20005</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sc_request</target_table>
+    <name>sc_request</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -54,7 +54,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20006</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sc_req_item</target_table>
+    <name>sc_req_item</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -64,7 +64,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20007</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sc_task</target_table>
+    <name>sc_task</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -74,7 +74,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20008</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>task</target_table>
+    <name>task</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -84,7 +84,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20009</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>task_sla</target_table>
+    <name>task_sla</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -94,7 +94,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20010</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmdb_ci</target_table>
+    <name>cmdb_ci</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -104,7 +104,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20011</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmdb_rel_ci</target_table>
+    <name>cmdb_rel_ci</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -114,7 +114,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20012</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmdb_ci_service</target_table>
+    <name>cmdb_ci_service</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -124,7 +124,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20013</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sys_user</target_table>
+    <name>sys_user</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -134,7 +134,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20014</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sys_user_group</target_table>
+    <name>sys_user_group</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -144,7 +144,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20015</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sys_user_has_role</target_table>
+    <name>sys_user_has_role</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -154,7 +154,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20016</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmn_department</target_table>
+    <name>cmn_department</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -164,7 +164,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20017</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmn_location</target_table>
+    <name>cmn_location</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -174,7 +174,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20018</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>core_company</target_table>
+    <name>core_company</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -184,7 +184,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20019</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>cmn_cost_center</target_table>
+    <name>cmn_cost_center</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -194,7 +194,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20020</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>sys_scope</target_table>
+    <name>sys_scope</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -204,7 +204,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20021</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>v_plugin</target_table>
+    <name>v_plugin</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -214,7 +214,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20022</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>kb_knowledge</target_table>
+    <name>kb_knowledge</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -224,7 +224,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20023</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>global</target_scope>
-    <target_table>kb_knowledge</target_table>
+    <name>kb_knowledge</name>
     <operation>write</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -234,7 +234,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20024</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_hr_core</target_scope>
-    <target_table>sn_hr_core_case</target_table>
+    <name>sn_hr_core_case</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -244,7 +244,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20025</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_hr_core</target_scope>
-    <target_table>sn_hr_core_employee</target_table>
+    <name>sn_hr_core_employee</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -254,7 +254,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20026</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_hr_core</target_scope>
-    <target_table>sn_hr_core_department</target_table>
+    <name>sn_hr_core_department</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -264,7 +264,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20027</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_grc</target_scope>
-    <target_table>sn_risk_risk</target_table>
+    <name>sn_risk_risk</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -274,7 +274,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20028</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_grc</target_scope>
-    <target_table>sn_compliance_policy</target_table>
+    <name>sn_compliance_policy</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -284,7 +284,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20029</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_grc</target_scope>
-    <target_table>sn_compliance_control</target_table>
+    <name>sn_compliance_control</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -294,7 +294,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20030</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_grc</target_scope>
-    <target_table>sn_audit_engagement</target_table>
+    <name>sn_audit_engagement</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -304,7 +304,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20031</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_customerservice</target_scope>
-    <target_table>sn_customerservice_case</target_table>
+    <name>sn_customerservice_case</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -314,7 +314,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20032</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_customerservice</target_scope>
-    <target_table>sn_customerservice_account</target_table>
+    <name>sn_customerservice_account</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -324,7 +324,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20033</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_customerservice</target_scope>
-    <target_table>sn_customerservice_contact</target_table>
+    <name>sn_customerservice_contact</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -334,7 +334,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20034</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_bcm</target_scope>
-    <target_table>sn_bcm_plan</target_table>
+    <name>sn_bcm_plan</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -344,7 +344,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20035</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_bcm</target_scope>
-    <target_table>sn_bcm_exercise</target_table>
+    <name>sn_bcm_exercise</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -354,7 +354,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20036</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_bcm</target_scope>
-    <target_table>sn_bcm_impact_analysis</target_table>
+    <name>sn_bcm_impact_analysis</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -364,7 +364,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20037</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_itom_discovery</target_scope>
-    <target_table>discovery_status</target_table>
+    <name>discovery_status</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -374,7 +374,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20038</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_itom_discovery</target_scope>
-    <target_table>sa_node</target_table>
+    <name>sa_node</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
@@ -384,7 +384,7 @@
     <sys_id>b1b2c3d4e5f6a1b2c3d4e5f6a1b20039</sys_id>
     <scope display_value="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</scope>
     <target_scope>sn_itom_discovery</target_scope>
-    <target_table>sa_edge_service</target_table>
+    <name>sa_edge_service</name>
     <operation>read</operation>
     <status>allowed</status>
     <privilege_type>table</privilege_type>
