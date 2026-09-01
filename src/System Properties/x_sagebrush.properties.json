@@ -89,5 +89,26 @@
     "description": "Opening greeting spoken and displayed when SAGEBRUSH is invoked",
     "type": "string",
     "private": false
+  },
+  {
+    "name": "x_sagebrush.dialogflow.webhook_secret",
+    "value": "",
+    "description": "Shared secret header value Dialogflow sends in X-Webhook-Secret. Validated on every inbound request.",
+    "type": "string",
+    "private": true
+  },
+  {
+    "name": "x_sagebrush.dialogflow.project_id",
+    "value": "",
+    "description": "Google Cloud project ID hosting the Dialogflow CX agent.",
+    "type": "string",
+    "private": false
+  },
+  {
+    "name": "x_sagebrush.dialogflow.agent_id",
+    "value": "",
+    "description": "Dialogflow CX agent ID (UUID from Google Cloud console).",
+    "type": "string",
+    "private": false
   }
 ]
