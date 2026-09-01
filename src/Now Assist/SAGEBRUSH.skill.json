@@ -2,7 +2,7 @@
   "name": "SAGEBRUSH",
   "label": "SAGEBRUSH — AI Architect Agent",
   "description": "AI Architect Agent for Solution Design and Data Quality. Invoked by saying SAGEBRUSH.",
-  "scope": "x_sagebrush",
+  "scope": "x_snc_sagebrush",
   "trigger_utterances": [
     "SAGEBRUSH",
     "sage brush",

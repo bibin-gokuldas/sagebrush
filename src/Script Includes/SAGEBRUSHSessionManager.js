@@ -2,15 +2,15 @@
  * @name SAGEBRUSHSessionManager
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHSessionManager = Class.create();
 SAGEBRUSHSessionManager.prototype = {
 
-    SESSION_TABLE: 'x_sagebrush_session',
+    SESSION_TABLE: 'x_snc_sagebrush_session',
 
     initialize: function() {
-        this.log    = new GSLog('x_sagebrush.session', 'SAGEBRUSHSessionManager');
+        this.log    = new GSLog('x_snc_sagebrush.session', 'SAGEBRUSHSessionManager');
         this.auditor = new SAGEBRUSHAuditLogger();
     },
 

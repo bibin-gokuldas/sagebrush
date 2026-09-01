@@ -2,7 +2,7 @@
 var scorer = new SAGEBRUSHDQScorer();
 
 // Create a test run with known issues
-var runGr = new GlideRecord('x_sagebrush_dq_run');
+var runGr = new GlideRecord('x_snc_sagebrush_dq_run');
 runGr.initialize();
 runGr.setValue('run_type', 'domain');
 runGr.setValue('domain', 'itsm');
@@ -29,7 +29,7 @@ gs.assertTrue(typeof domainScore === 'number', 'scoreDomain should return number
 gs.assertTrue(domainScore >= 0 && domainScore <= 100, 'domain score should be 0-100');
 
 // Test 3: perfect score when no issues
-var cleanRun = new GlideRecord('x_sagebrush_dq_run');
+var cleanRun = new GlideRecord('x_snc_sagebrush_dq_run');
 cleanRun.initialize();
 cleanRun.setValue('run_type', 'domain');
 cleanRun.setValue('domain', 'hrsd');

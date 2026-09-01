@@ -5,25 +5,25 @@
  * @name SAGEBRUSHDesignWriter
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDesignWriter = Class.create();
 SAGEBRUSHDesignWriter.prototype = {
 
-    SESSION_TABLE: 'x_sagebrush_session',
-    REQ_TABLE:     'x_sagebrush_requirement',
-    OOB_TABLE:     'x_sagebrush_oob_map',
+    SESSION_TABLE: 'x_snc_sagebrush_session',
+    REQ_TABLE:     'x_snc_sagebrush_requirement',
+    OOB_TABLE:     'x_snc_sagebrush_oob_map',
     KB_TABLE:      'kb_knowledge',
 
     initialize: function(dependencies) {
-        this.log = new GSLog('x_sagebrush.writer', 'SAGEBRUSHDesignWriter');
+        this.log = new GSLog('x_snc_sagebrush.writer', 'SAGEBRUSHDesignWriter');
         this.ai  = (dependencies && dependencies.ai)  || new SAGEBRUSHAIProvider();
         this.sm  = (dependencies && dependencies.sm)  || new SAGEBRUSHSessionManager();
     },
 
     /**
      * Generates a High-Level Design KB article for the given session.
-     * @param {string} sessionId - x_sagebrush_session sys_id
+     * @param {string} sessionId - x_snc_sagebrush_session sys_id
      * @returns {string} sys_id of the created KB article, or null on failure
      */
     generateHLD: function(sessionId) {
@@ -49,7 +49,7 @@ SAGEBRUSHDesignWriter.prototype = {
 
     /**
      * Generates a Low-Level Design KB article for the given session.
-     * @param {string} sessionId - x_sagebrush_session sys_id
+     * @param {string} sessionId - x_snc_sagebrush_session sys_id
      * @param {string} hldSysId  - sys_id of the previously generated HLD article
      * @returns {string} sys_id of the created KB article, or null on failure
      */
@@ -222,7 +222,7 @@ SAGEBRUSHDesignWriter.prototype = {
             '# Low-Level Design',
             '',
             '## Table Design & Schema Changes',
-            'Custom tables: x_sagebrush_session, x_sagebrush_requirement, x_sagebrush_oob_map.',
+            'Custom tables: x_snc_sagebrush_session, x_snc_sagebrush_requirement, x_snc_sagebrush_oob_map.',
             '',
             '## Script Includes',
             'SAGEBRUSHDesignWriter, SAGEBRUSHAIProvider, SAGEBRUSHSessionManager, SAGEBRUSHRequirementExtractor.',
@@ -240,7 +240,7 @@ SAGEBRUSHDesignWriter.prototype = {
             'To be defined per integration requirement.',
             '',
             '## ACLs and Security',
-            'Role-based access: x_sagebrush.admin, x_sagebrush.user.',
+            'Role-based access: x_snc_sagebrush.admin, x_snc_sagebrush.user.',
             '',
             '## Test Scenarios',
             'Based on confirmed requirements:',
@@ -266,11 +266,11 @@ SAGEBRUSHDesignWriter.prototype = {
             kb.setValue('short_description', title);
             kb.setValue('text', content);
             kb.setValue('workflow_state', 'draft');
-            kb.setValue('kb_knowledge_base', gs.getProperty('x_sagebrush.kb.knowledge_base_sys_id', ''));
+            kb.setValue('kb_knowledge_base', gs.getProperty('x_snc_sagebrush.kb.knowledge_base_sys_id', ''));
             if (parentSysId) {
                 kb.setValue('kb_category', parentSysId);
             }
-            kb.setValue('source', 'x_sagebrush');
+            kb.setValue('source', 'x_snc_sagebrush');
             var sysId = kb.insert();
             return sysId || null;
         } catch (e) {
@@ -295,7 +295,7 @@ SAGEBRUSHDesignWriter.prototype = {
             var newCat = new GlideRecord('kb_category');
             newCat.initialize();
             newCat.setValue('label', 'SAGEBRUSH');
-            newCat.setValue('kb_knowledge_base', gs.getProperty('x_sagebrush.kb.knowledge_base_sys_id', ''));
+            newCat.setValue('kb_knowledge_base', gs.getProperty('x_snc_sagebrush.kb.knowledge_base_sys_id', ''));
             return newCat.insert() || null;
         } catch (e) {
             this.log.error('_getOrCreateCategory failed: ' + e.message);

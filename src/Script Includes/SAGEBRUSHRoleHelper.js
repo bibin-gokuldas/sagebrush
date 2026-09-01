@@ -2,23 +2,23 @@
  * @name SAGEBRUSHRoleHelper
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHRoleHelper = Class.create();
 SAGEBRUSHRoleHelper.prototype = {
 
     DOMAIN_ROLES: {
-        'itsm':        ['itil', 'x_sagebrush.admin', 'x_sagebrush.architect'],
-        'itom':        ['discovery_admin', 'x_sagebrush.architect'],
-        'grc':         ['sn_grc.admin', 'x_sagebrush.architect'],
-        'bcm':         ['sn_bcm.admin', 'x_sagebrush.architect'],
-        'csm':         ['sn_customerservice.admin', 'x_sagebrush.architect'],
-        'hrsd':        ['sn_hr_core.admin', 'x_sagebrush.architect'],
-        'foundational':['admin', 'x_sagebrush.architect']
+        'itsm':        ['itil', 'x_snc_sagebrush.admin', 'x_snc_sagebrush.architect'],
+        'itom':        ['discovery_admin', 'x_snc_sagebrush.architect'],
+        'grc':         ['sn_grc.admin', 'x_snc_sagebrush.architect'],
+        'bcm':         ['sn_bcm.admin', 'x_snc_sagebrush.architect'],
+        'csm':         ['sn_customerservice.admin', 'x_snc_sagebrush.architect'],
+        'hrsd':        ['sn_hr_core.admin', 'x_snc_sagebrush.architect'],
+        'foundational':['admin', 'x_snc_sagebrush.architect']
     },
 
     initialize: function() {
-        this.log = new GSLog('x_sagebrush.role', 'SAGEBRUSHRoleHelper');
+        this.log = new GSLog('x_snc_sagebrush.role', 'SAGEBRUSHRoleHelper');
     },
 
     /**
@@ -28,9 +28,9 @@ SAGEBRUSHRoleHelper.prototype = {
      */
     getUserRole: function(userId) {
         var uid = userId || gs.getUserID();
-        if (this._userHasRole(uid, 'x_sagebrush.architect')) { return 'architect'; }
-        if (this._userHasRole(uid, 'x_sagebrush.admin'))     { return 'admin'; }
-        if (this._userHasRole(uid, 'x_sagebrush.viewer'))    { return 'viewer'; }
+        if (this._userHasRole(uid, 'x_snc_sagebrush.architect')) { return 'architect'; }
+        if (this._userHasRole(uid, 'x_snc_sagebrush.admin'))     { return 'admin'; }
+        if (this._userHasRole(uid, 'x_snc_sagebrush.viewer'))    { return 'viewer'; }
         return 'none';
     },
 
@@ -43,7 +43,7 @@ SAGEBRUSHRoleHelper.prototype = {
     canAccessDomain: function(userId, domain) {
         if (!domain) { return false; }
         var uid = userId || gs.getUserID();
-        if (this._userHasRole(uid, 'x_sagebrush.architect')) { return true; }
+        if (this._userHasRole(uid, 'x_snc_sagebrush.architect')) { return true; }
 
         var domainRoles = this.DOMAIN_ROLES[domain.toLowerCase()];
         if (!domainRoles) { return false; }

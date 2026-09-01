@@ -1,9 +1,9 @@
 {
-  "name": "x_sagebrush_instance_snapshot",
+  "name": "x_snc_sagebrush_instance_snapshot",
   "label": "SAGEBRUSH Instance Snapshot",
   "extends": "",
   "fields": [
-    { "name": "session",        "type": "reference", "ref_table": "x_sagebrush_session", "label": "Session" },
+    { "name": "session",        "type": "reference", "ref_table": "x_snc_sagebrush_session", "label": "Session" },
     { "name": "snapshot_json",  "type": "string",    "max_length": 1048576, "label": "Snapshot JSON" },
     { "name": "domains_scanned","type": "string",    "max_length": 512,    "label": "Domains Scanned" },
     { "name": "plugin_count",   "type": "integer",   "label": "Active Plugins" },

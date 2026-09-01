@@ -2,19 +2,19 @@
  * @name SAGEBRUSHDQScorer
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDQScorer = Class.create();
 SAGEBRUSHDQScorer.prototype = {
 
-    RESULT_TABLE: 'x_sagebrush_dq_result',
-    RUN_TABLE:    'x_sagebrush_dq_run',
-    CHECK_TABLE:  'x_sagebrush_dq_check',
+    RESULT_TABLE: 'x_snc_sagebrush_dq_result',
+    RUN_TABLE:    'x_snc_sagebrush_dq_run',
+    CHECK_TABLE:  'x_snc_sagebrush_dq_check',
 
     SEVERITY_DEDUCTIONS: { critical: 10, high: 5, medium: 2, low: 1 },
 
     initialize: function() {
-        this.log = new GSLog('x_sagebrush.dq.scorer', 'SAGEBRUSHDQScorer');
+        this.log = new GSLog('x_snc_sagebrush.dq.scorer', 'SAGEBRUSHDQScorer');
     },
 
     /**

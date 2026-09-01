@@ -25,7 +25,7 @@ gs.assertTrue(snapshot.hasOwnProperty('nowassist'), 'snapshot should have nowass
 gs.assertTrue(Array.isArray(snapshot.plugins), 'plugins should be an array');
 
 // Test 3: scan writes audit record
-var audit = new GlideRecord('x_sagebrush_audit');
+var audit = new GlideRecord('x_snc_sagebrush_audit');
 audit.addQuery('session', sessionId);
 audit.addQuery('event_type', 'instance_scan');
 audit.query();

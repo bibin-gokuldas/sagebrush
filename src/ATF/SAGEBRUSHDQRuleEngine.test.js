@@ -4,7 +4,7 @@ var mgr     = new SAGEBRUSHSessionManager();
 var sessionId = mgr.createSession(gs.getUserID(), 'nowassist');
 
 // Create a DQ run record
-var runGr = new GlideRecord('x_sagebrush_dq_run');
+var runGr = new GlideRecord('x_snc_sagebrush_dq_run');
 runGr.initialize();
 runGr.setValue('run_type', 'domain');
 runGr.setValue('domain', 'foundational');
@@ -21,8 +21,8 @@ gs.assertTrue(result.hasOwnProperty('issues_found'), 'result should have issues_
 gs.assertTrue(typeof result.checks_run === 'number', 'checks_run should be a number');
 gs.assertTrue(result.checks_run >= 0, 'checks_run should be non-negative');
 
-// Test 2: DQ result records are created in x_sagebrush_dq_result
-var resultGr = new GlideRecord('x_sagebrush_dq_result');
+// Test 2: DQ result records are created in x_snc_sagebrush_dq_result
+var resultGr = new GlideRecord('x_snc_sagebrush_dq_result');
 resultGr.addQuery('dq_run', runId);
 resultGr.query();
 // Note: may be 0 results if test instance data is clean — that is valid

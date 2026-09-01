@@ -36,12 +36,12 @@ var inserted = 0;
 var skipped = 0;
 
 capabilities.forEach(function(cap) {
-    var existing = new GlideRecord('x_sagebrush_oob_capability');
+    var existing = new GlideRecord('x_snc_sagebrush_oob_capability');
     existing.addQuery('capability_name', cap.capability_name);
     existing.query();
     if (existing.next()) { skipped++; return; }
 
-    var gr = new GlideRecord('x_sagebrush_oob_capability');
+    var gr = new GlideRecord('x_snc_sagebrush_oob_capability');
     gr.initialize();
     for (var field in cap) {
         if (cap.hasOwnProperty(field)) { gr.setValue(field, cap[field]); }
@@ -50,5 +50,5 @@ capabilities.forEach(function(cap) {
     inserted++;
 });
 
-var log = new GSLog('x_sagebrush.fix', 'SAGEBRUSH_FixScript');
+var log = new GSLog('x_snc_sagebrush.fix', 'SAGEBRUSH_FixScript');
 log.info('SAGEBRUSH OOB Capabilities: ' + inserted + ' inserted, ' + skipped + ' skipped.');

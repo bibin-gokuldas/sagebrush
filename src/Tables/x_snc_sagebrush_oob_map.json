@@ -1,11 +1,11 @@
 {
-  "name": "x_sagebrush_oob_map",
+  "name": "x_snc_sagebrush_oob_map",
   "label": "SAGEBRUSH OOB Mapping",
   "extends": "",
   "fields": [
-    { "name": "session",        "type": "reference", "ref_table": "x_sagebrush_session",        "label": "Session" },
-    { "name": "requirement",    "type": "reference", "ref_table": "x_sagebrush_requirement",    "label": "Requirement" },
-    { "name": "capability",     "type": "reference", "ref_table": "x_sagebrush_oob_capability", "label": "OOB Capability" },
+    { "name": "session",        "type": "reference", "ref_table": "x_snc_sagebrush_session",        "label": "Session" },
+    { "name": "requirement",    "type": "reference", "ref_table": "x_snc_sagebrush_requirement",    "label": "Requirement" },
+    { "name": "capability",     "type": "reference", "ref_table": "x_snc_sagebrush_oob_capability", "label": "OOB Capability" },
     { "name": "match_score",    "type": "integer",   "label": "Match Score (0-100)" },
     { "name": "config_needed",  "type": "string",    "max_length": 2048, "label": "Configuration Required" },
     { "name": "custom_code",    "type": "boolean",   "label": "Custom Code Required", "default": false },

@@ -1,5 +1,5 @@
 {
-  "name": "x_sagebrush_dq_run",
+  "name": "x_snc_sagebrush_dq_run",
   "label": "SAGEBRUSH DQ Run",
   "extends": "",
   "fields": [
@@ -7,7 +7,7 @@
     { "name": "domain",         "type": "string",  "label": "Domain (if domain run)" },
     { "name": "target_table",   "type": "string",  "label": "Table (if targeted run)" },
     { "name": "triggered_by",   "type": "choice",  "choices": ["scheduled","conversation","manual"], "label": "Triggered By" },
-    { "name": "session",        "type": "reference","ref_table": "x_sagebrush_session", "label": "SAGEBRUSH Session" },
+    { "name": "session",        "type": "reference","ref_table": "x_snc_sagebrush_session", "label": "SAGEBRUSH Session" },
     { "name": "state",          "type": "choice",  "choices": ["running","complete","failed"], "label": "State", "default": "running" },
     { "name": "checks_run",     "type": "integer", "label": "Checks Run" },
     { "name": "issues_found",   "type": "integer", "label": "Issues Found" },

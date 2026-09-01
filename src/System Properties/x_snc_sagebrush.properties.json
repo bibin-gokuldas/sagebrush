@@ -1,111 +1,111 @@
 [
   {
-    "name": "x_sagebrush.ai.provider",
+    "name": "x_snc_sagebrush.ai.provider",
     "value": "nowassist",
     "description": "Active AI provider: nowassist | claude | openai",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.fallback_provider",
+    "name": "x_snc_sagebrush.ai.fallback_provider",
     "value": "claude",
     "description": "Fallback AI provider when primary fails or unlicensed",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.fallback_enabled",
+    "name": "x_snc_sagebrush.ai.fallback_enabled",
     "value": "true",
     "description": "Master fallback switch. Set false to disable fallback entirely.",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.claude.api_key",
+    "name": "x_snc_sagebrush.ai.claude.api_key",
     "value": "",
     "description": "Anthropic Claude API key. Store encrypted.",
     "type": "string",
     "private": true
   },
   {
-    "name": "x_sagebrush.ai.claude.model",
+    "name": "x_snc_sagebrush.ai.claude.model",
     "value": "claude-opus-4-6",
     "description": "Claude model identifier",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.openai.api_key",
+    "name": "x_snc_sagebrush.ai.openai.api_key",
     "value": "",
     "description": "OpenAI API key. Store encrypted.",
     "type": "string",
     "private": true
   },
   {
-    "name": "x_sagebrush.ai.openai.model",
+    "name": "x_snc_sagebrush.ai.openai.model",
     "value": "gpt-4o",
     "description": "OpenAI model identifier",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.nowassist.licensed_domains",
+    "name": "x_snc_sagebrush.ai.nowassist.licensed_domains",
     "value": "itsm,csm,hrsd",
     "description": "Comma-separated domains with Now Assist license",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.max_tokens",
+    "name": "x_snc_sagebrush.ai.max_tokens",
     "value": "4096",
     "description": "Max tokens for all AI provider calls",
     "type": "integer",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.timeout_ms",
+    "name": "x_snc_sagebrush.ai.timeout_ms",
     "value": "30000",
     "description": "AI call timeout in milliseconds before fallback triggers",
     "type": "integer",
     "private": false
   },
   {
-    "name": "x_sagebrush.ai.external.send_record_data",
+    "name": "x_snc_sagebrush.ai.external.send_record_data",
     "value": "false",
     "description": "Allow raw record data to external AI. false = send statistical summaries only.",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.voice.provider",
+    "name": "x_snc_sagebrush.voice.provider",
     "value": "webspeech",
     "description": "Voice channel: webspeech | dialogflow",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.greeting.text",
+    "name": "x_snc_sagebrush.greeting.text",
     "value": "Hi, I'm SAGEBRUSH, your AI Architect Agent. I can help you with Solution Design or Data Quality Checks. What would you like to work on today?",
     "description": "Opening greeting spoken and displayed when SAGEBRUSH is invoked",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.dialogflow.webhook_secret",
+    "name": "x_snc_sagebrush.dialogflow.webhook_secret",
     "value": "",
     "description": "Shared secret header value Dialogflow sends in X-Webhook-Secret. Validated on every inbound request.",
     "type": "string",
     "private": true
   },
   {
-    "name": "x_sagebrush.dialogflow.project_id",
+    "name": "x_snc_sagebrush.dialogflow.project_id",
     "value": "",
     "description": "Google Cloud project ID hosting the Dialogflow CX agent.",
     "type": "string",
     "private": false
   },
   {
-    "name": "x_sagebrush.dialogflow.agent_id",
+    "name": "x_snc_sagebrush.dialogflow.agent_id",
     "value": "",
     "description": "Dialogflow CX agent ID (UUID from Google Cloud console).",
     "type": "string",

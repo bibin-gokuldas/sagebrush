@@ -2,15 +2,15 @@
  * @name SAGEBRUSHInstanceScanner
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHInstanceScanner = Class.create();
 SAGEBRUSHInstanceScanner.prototype = {
 
-    SNAPSHOT_TABLE: 'x_sagebrush_instance_snapshot',
+    SNAPSHOT_TABLE: 'x_snc_sagebrush_instance_snapshot',
 
     initialize: function(dependencies) {
-        this.log     = new GSLog('x_sagebrush.scanner', 'SAGEBRUSHInstanceScanner');
+        this.log     = new GSLog('x_snc_sagebrush.scanner', 'SAGEBRUSHInstanceScanner');
         this.auditor = (dependencies && dependencies.auditor) || new SAGEBRUSHAuditLogger();
         this.roles   = (dependencies && dependencies.roles)   || new SAGEBRUSHRoleHelper();
     },
@@ -93,7 +93,7 @@ SAGEBRUSHInstanceScanner.prototype = {
             gr.addQuery('scope', 'DOES NOT CONTAIN', 'sn_');
             gr.addQuery('scope', 'DOES NOT CONTAIN', 'com.snc');
             gr.addQuery('scope', '!=', 'global');
-            gr.addQuery('scope', '!=', 'x_sagebrush');
+            gr.addQuery('scope', '!=', 'x_snc_sagebrush');
             gr.addQuery('active', true);
             gr.query();
             while (gr.next()) {
@@ -226,7 +226,7 @@ SAGEBRUSHInstanceScanner.prototype = {
             skillAgg.addAggregate('COUNT');
             skillAgg.query();
             result.skill_count = skillAgg.next() ? parseInt(skillAgg.getAggregate('COUNT'), 10) : 0;
-            var licensed = gs.getProperty('x_sagebrush.ai.nowassist.licensed_domains', 'itsm,csm,hrsd');
+            var licensed = gs.getProperty('x_snc_sagebrush.ai.nowassist.licensed_domains', 'itsm,csm,hrsd');
             result.licensed_domains = licensed.split(',');
         } catch (e) { result.skill_count = 0; result.error = e.message; }
         return result;

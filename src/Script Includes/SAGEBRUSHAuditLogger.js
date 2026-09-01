@@ -2,7 +2,7 @@
  * @name SAGEBRUSHAuditLogger
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHAuditLogger = Class.create();
 SAGEBRUSHAuditLogger.prototype = {
@@ -10,7 +10,7 @@ SAGEBRUSHAuditLogger.prototype = {
     VALID_EVENTS: ['invoked', 'ai_call', 'instance_scan', 'dq_scan', 'design_generated', 'cross_scope_read'],
 
     initialize: function() {
-        this.gslog = new GSLog('x_sagebrush.audit', 'SAGEBRUSHAuditLogger');
+        this.gslog = new GSLog('x_snc_sagebrush.audit', 'SAGEBRUSHAuditLogger');
     },
 
     /**
@@ -26,7 +26,7 @@ SAGEBRUSHAuditLogger.prototype = {
                 return;
             }
             var opts = options || {};
-            var audit = new GlideRecord('x_sagebrush_audit');
+            var audit = new GlideRecord('x_snc_sagebrush_audit');
             audit.initialize();
             audit.setValue('user_sys_id', gs.getUserID());
             audit.setValue('event_type', eventType);

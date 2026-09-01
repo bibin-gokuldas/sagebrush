@@ -2,16 +2,16 @@
  * @name SAGEBRUSHDQAIEngine
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDQAIEngine = Class.create();
 SAGEBRUSHDQAIEngine.prototype = {
 
-    RESULT_TABLE: 'x_sagebrush_dq_result',
-    RUN_TABLE:    'x_sagebrush_dq_run',
+    RESULT_TABLE: 'x_snc_sagebrush_dq_result',
+    RUN_TABLE:    'x_snc_sagebrush_dq_run',
 
     initialize: function(dependencies) {
-        this.log    = new GSLog('x_sagebrush.dq.ai', 'SAGEBRUSHDQAIEngine');
+        this.log    = new GSLog('x_snc_sagebrush.dq.ai', 'SAGEBRUSHDQAIEngine');
         this.ai     = (dependencies && dependencies.ai)     || new SAGEBRUSHAIProvider();
         this.masker = (dependencies && dependencies.masker) || new SAGEBRUSHDataMasker();
     },
@@ -20,7 +20,7 @@ SAGEBRUSHDQAIEngine.prototype = {
      * Analyses statistical summaries of a DQ run for AI-detected anomalies.
      * Never sends raw record data to external AI — uses masked statistical summaries only.
      * @param {string} runSysId
-     * @returns {Number} count of AI anomalies added to x_sagebrush_dq_result
+     * @returns {Number} count of AI anomalies added to x_snc_sagebrush_dq_result
      */
     analyseRun: function(runSysId) {
         var summary = this._buildStatisticalSummary(runSysId);

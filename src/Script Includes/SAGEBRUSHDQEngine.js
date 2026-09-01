@@ -2,15 +2,15 @@
  * @name SAGEBRUSHDQEngine
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDQEngine = Class.create();
 SAGEBRUSHDQEngine.prototype = {
 
-    RUN_TABLE: 'x_sagebrush_dq_run',
+    RUN_TABLE: 'x_snc_sagebrush_dq_run',
 
     initialize: function(dependencies) {
-        this.log        = new GSLog('x_sagebrush.dq', 'SAGEBRUSHDQEngine');
+        this.log        = new GSLog('x_snc_sagebrush.dq', 'SAGEBRUSHDQEngine');
         this.rules      = (dependencies && dependencies.rules)      || new SAGEBRUSHDQRuleEngine();
         this.aiEngine   = (dependencies && dependencies.aiEngine)   || new SAGEBRUSHDQAIEngine();
         this.scorer     = (dependencies && dependencies.scorer)     || new SAGEBRUSHDQScorer();
@@ -86,7 +86,7 @@ SAGEBRUSHDQEngine.prototype = {
             return 'DQ Scan complete for ' + domain + '.\n' +
                 'Score: ' + score.toFixed(1) + '/100\n' +
                 'Total issues: ' + issues + ' (' + critical + ' critical)\n' +
-                'Results are in x_sagebrush_dq_result. Would you like me to walk through the critical items?';
+                'Results are in x_snc_sagebrush_dq_result. Would you like me to walk through the critical items?';
         }
 
         // Viewer / business stakeholder — plain language
@@ -99,7 +99,7 @@ SAGEBRUSHDQEngine.prototype = {
     _updateSeverityCounts: function(runId) {
         var counts = { critical: 0, high: 0, medium: 0, low: 0 };
 
-        var agg = new GlideAggregate('x_sagebrush_dq_result');
+        var agg = new GlideAggregate('x_snc_sagebrush_dq_result');
         agg.addQuery('dq_run', runId);
         agg.addAggregate('COUNT', 'severity');
         agg.groupBy('severity');

@@ -2,7 +2,7 @@
 // Runs once at app install. Safe to re-run — checks before insert.
 // Provisions sys_scope_privilege records for all cross-scope reads.
 
-var SAGEBRUSH_APP_SCOPE = 'x_sagebrush';
+var SAGEBRUSH_APP_SCOPE = 'x_snc_sagebrush';
 
 var privileges = [
     // Global scope — ITSM + Foundational tables
@@ -79,5 +79,5 @@ privileges.forEach(function(p) {
     inserted++;
 });
 
-var log = new GSLog('x_sagebrush.fix', 'SAGEBRUSH_FixScript');
+var log = new GSLog('x_snc_sagebrush.fix', 'SAGEBRUSH_FixScript');
 log.info('SAGEBRUSH Install: ' + inserted + ' scope privileges created, ' + skipped + ' already existed.');

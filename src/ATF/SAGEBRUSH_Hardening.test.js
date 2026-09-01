@@ -21,7 +21,7 @@ gs.assertTrue(Object.keys(masked.tokenMap).length > 0, 'tokenMap must have at le
 
 // ─── Test 2: send_record_data=false enforced ─────────────────────────────────
 // Verify the property guard exists and defaults to false
-var sendRaw = gs.getProperty('x_sagebrush.ai.external.send_record_data', 'false');
+var sendRaw = gs.getProperty('x_snc_sagebrush.ai.external.send_record_data', 'false');
 gs.assertTrue(sendRaw === 'false', 'send_record_data must default to false — never ship raw records to external AI');
 
 // ─── Test 3: AI provider fallback chain active ───────────────────────────────
@@ -41,7 +41,7 @@ gs.assertTrue(badParsed.fulfillment_response !== null, 'Bad secret should still 
 gs.assertTrue(badParsed.fulfillment_response.messages.length > 0, 'Error response must have a message');
 
 // ─── Test 5: Dialogflow handler — valid full round-trip ──────────────────────
-var secret   = gs.getProperty('x_sagebrush.dialogflow.webhook_secret', 'test-secret');
+var secret   = gs.getProperty('x_snc_sagebrush.dialogflow.webhook_secret', 'test-secret');
 var goodBody = JSON.stringify({ sessionInfo: { session: 'proj/sessions/hardening-001', parameters: {} }, text: 'SAGEBRUSH' });
 var goodResult = dfHandler.processRequest(goodBody, secret, secret);
 var goodParsed  = JSON.parse(goodResult);

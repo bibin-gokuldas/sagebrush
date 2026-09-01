@@ -1,9 +1,9 @@
 {
-  "name": "x_sagebrush_ai_log",
+  "name": "x_snc_sagebrush_ai_log",
   "label": "SAGEBRUSH AI Log",
   "extends": "",
   "fields": [
-    { "name": "session",        "type": "reference", "ref_table": "x_sagebrush_session", "label": "Session" },
+    { "name": "session",        "type": "reference", "ref_table": "x_snc_sagebrush_session", "label": "Session" },
     { "name": "provider",       "type": "choice",    "choices": ["nowassist","claude","openai"], "label": "Provider Used", "mandatory": true },
     { "name": "domain",         "type": "string",    "label": "Domain" },
     { "name": "fallback_used",  "type": "boolean",   "label": "Fallback Triggered", "default": false },

@@ -1,5 +1,5 @@
 {
-  "name": "x_sagebrush_dq_check",
+  "name": "x_snc_sagebrush_dq_check",
   "label": "SAGEBRUSH DQ Check",
   "extends": "",
   "fields": [

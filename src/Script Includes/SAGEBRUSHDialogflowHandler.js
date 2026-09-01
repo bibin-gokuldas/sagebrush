@@ -2,7 +2,7 @@
  * @name SAGEBRUSHDialogflowHandler
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  * @description Translates Dialogflow CX webhook payloads to ConversationHandler calls and formats responses.
  *              Acts as a thin transport adapter — all conversation logic remains in ConversationHandler.
  */
@@ -10,7 +10,7 @@ var SAGEBRUSHDialogflowHandler = Class.create();
 SAGEBRUSHDialogflowHandler.prototype = {
 
     initialize: function(dependencies) {
-        this.log         = new GSLog('x_sagebrush.dialogflow', 'SAGEBRUSHDialogflowHandler');
+        this.log         = new GSLog('x_snc_sagebrush.dialogflow', 'SAGEBRUSHDialogflowHandler');
         this.conversation = (dependencies && dependencies.conversation) || new SAGEBRUSHConversationHandler();
     },
 
@@ -18,7 +18,7 @@ SAGEBRUSHDialogflowHandler.prototype = {
      * Main entry point called by the IntegrationHub inbound webhook flow.
      * @param {string} requestBodyJson   - Raw JSON string of the Dialogflow CX webhook POST body
      * @param {string} incomingSecret    - Value from X-Webhook-Secret request header
-     * @param {string} expectedSecret    - Value from x_sagebrush.dialogflow.webhook_secret property (passed in by flow)
+     * @param {string} expectedSecret    - Value from x_snc_sagebrush.dialogflow.webhook_secret property (passed in by flow)
      * @returns {string} JSON string — Dialogflow CX webhook response
      */
     processRequest: function(requestBodyJson, incomingSecret, expectedSecret) {

@@ -2,17 +2,17 @@
  * @name SAGEBRUSHOOBMapper
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHOOBMapper = Class.create();
 SAGEBRUSHOOBMapper.prototype = {
 
-    REQ_TABLE: 'x_sagebrush_requirement',
-    CAP_TABLE: 'x_sagebrush_oob_capability',
-    MAP_TABLE: 'x_sagebrush_oob_map',
+    REQ_TABLE: 'x_snc_sagebrush_requirement',
+    CAP_TABLE: 'x_snc_sagebrush_oob_capability',
+    MAP_TABLE: 'x_snc_sagebrush_oob_map',
 
     initialize: function(dependencies) {
-        this.log = new GSLog('x_sagebrush.oob', 'SAGEBRUSHOOBMapper');
+        this.log = new GSLog('x_snc_sagebrush.oob', 'SAGEBRUSHOOBMapper');
         this.ai  = (dependencies && dependencies.ai) || new SAGEBRUSHAIProvider();
     },
 

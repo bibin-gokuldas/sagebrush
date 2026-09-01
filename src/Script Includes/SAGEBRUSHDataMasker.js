@@ -2,7 +2,7 @@
  * @name SAGEBRUSHDataMasker
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDataMasker = Class.create();
 SAGEBRUSHDataMasker.prototype = {
@@ -11,7 +11,7 @@ SAGEBRUSHDataMasker.prototype = {
                  'name', 'employee_id', 'user_name', 'password', 'sys_id'],
 
     initialize: function() {
-        this.log = new GSLog('x_sagebrush.masker', 'SAGEBRUSHDataMasker');
+        this.log = new GSLog('x_snc_sagebrush.masker', 'SAGEBRUSHDataMasker');
     },
 
     /**

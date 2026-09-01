@@ -2,12 +2,12 @@
  * @name SAGEBRUSHDQRemediator
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDQRemediator = Class.create();
 SAGEBRUSHDQRemediator.prototype = {
 
-    RESULT_TABLE: 'x_sagebrush_dq_result',
+    RESULT_TABLE: 'x_snc_sagebrush_dq_result',
 
     DOMAIN_GROUPS: {
         'itsm':         'Service Desk',
@@ -20,7 +20,7 @@ SAGEBRUSHDQRemediator.prototype = {
     },
 
     initialize: function(dependencies) {
-        this.log   = new GSLog('x_sagebrush.dq.remediation', 'SAGEBRUSHDQRemediator');
+        this.log   = new GSLog('x_snc_sagebrush.dq.remediation', 'SAGEBRUSHDQRemediator');
         this.ai    = (dependencies && dependencies.ai)    || new SAGEBRUSHAIProvider();
         this.roles = (dependencies && dependencies.roles) || new SAGEBRUSHRoleHelper();
     },
@@ -28,7 +28,7 @@ SAGEBRUSHDQRemediator.prototype = {
     /**
      * Generates role-appropriate remediation hint for a DQ result.
      * Architect/Dev: technical detail. Admin: step-by-step. Viewer: plain language.
-     * @param {string} resultSysId - x_sagebrush_dq_result sys_id
+     * @param {string} resultSysId - x_snc_sagebrush_dq_result sys_id
      * @param {string} userId
      * @returns {string}
      */

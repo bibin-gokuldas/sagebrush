@@ -45,12 +45,12 @@ var checks = [
 
 var inserted = 0, skipped = 0;
 checks.forEach(function(c) {
-    var existing = new GlideRecord('x_sagebrush_dq_check');
+    var existing = new GlideRecord('x_snc_sagebrush_dq_check');
     existing.addQuery('check_name', c.check_name);
     existing.query();
     if (existing.next()) { skipped++; return; }
 
-    var gr = new GlideRecord('x_sagebrush_dq_check');
+    var gr = new GlideRecord('x_snc_sagebrush_dq_check');
     gr.initialize();
     for (var f in c) { if (c.hasOwnProperty(f)) { gr.setValue(f, c[f]); } }
     gr.setValue('check_type', c.check_type || 'query');
@@ -58,5 +58,5 @@ checks.forEach(function(c) {
     gr.insert();
     inserted++;
 });
-var log = new GSLog('x_sagebrush.fix', 'SAGEBRUSH_SeedDQChecks');
+var log = new GSLog('x_snc_sagebrush.fix', 'SAGEBRUSH_SeedDQChecks');
 log.info('SAGEBRUSH DQ Checks: ' + inserted + ' inserted, ' + skipped + ' skipped.');

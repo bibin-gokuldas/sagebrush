@@ -1,5 +1,5 @@
 {
-  "name": "x_sagebrush_oob_capability",
+  "name": "x_snc_sagebrush_oob_capability",
   "label": "SAGEBRUSH OOB Capability",
   "extends": "",
   "fields": [

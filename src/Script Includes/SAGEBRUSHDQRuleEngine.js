@@ -2,25 +2,25 @@
  * @name SAGEBRUSHDQRuleEngine
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHDQRuleEngine = Class.create();
 SAGEBRUSHDQRuleEngine.prototype = {
 
-    CHECK_TABLE:  'x_sagebrush_dq_check',
-    RESULT_TABLE: 'x_sagebrush_dq_result',
-    RUN_TABLE:    'x_sagebrush_dq_run',
+    CHECK_TABLE:  'x_snc_sagebrush_dq_check',
+    RESULT_TABLE: 'x_snc_sagebrush_dq_result',
+    RUN_TABLE:    'x_snc_sagebrush_dq_run',
     CHUNK_SIZE:   500,
 
     SEVERITY_WEIGHTS: { critical: 10, high: 5, medium: 2, low: 1 },
 
     initialize: function() {
-        this.log = new GSLog('x_sagebrush.dq.rules', 'SAGEBRUSHDQRuleEngine');
+        this.log = new GSLog('x_snc_sagebrush.dq.rules', 'SAGEBRUSHDQRuleEngine');
     },
 
     /**
      * Runs all active checks for a specific domain.
-     * @param {string} runSysId - x_sagebrush_dq_run sys_id
+     * @param {string} runSysId - x_snc_sagebrush_dq_run sys_id
      * @param {string} domain - itsm|itom|grc|bcm|csm|hrsd|foundational
      * @returns {Object} { checks_run, issues_found, results }
      */

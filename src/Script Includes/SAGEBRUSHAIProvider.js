@@ -2,18 +2,18 @@
  * @name SAGEBRUSHAIProvider
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHAIProvider = Class.create();
 SAGEBRUSHAIProvider.prototype = {
 
     initialize: function() {
-        this.log       = new GSLog('x_sagebrush.ai', 'SAGEBRUSHAIProvider');
-        this.provider  = gs.getProperty('x_sagebrush.ai.provider', 'nowassist');
-        this.fallback  = gs.getProperty('x_sagebrush.ai.fallback_provider', 'claude');
-        this.fbEnabled = gs.getProperty('x_sagebrush.ai.fallback_enabled', 'true') === 'true';
-        this.timeoutMs = parseInt(gs.getProperty('x_sagebrush.ai.timeout_ms', '30000'), 10);
-        this.maxTokens = parseInt(gs.getProperty('x_sagebrush.ai.max_tokens', '4096'), 10);
+        this.log       = new GSLog('x_snc_sagebrush.ai', 'SAGEBRUSHAIProvider');
+        this.provider  = gs.getProperty('x_snc_sagebrush.ai.provider', 'nowassist');
+        this.fallback  = gs.getProperty('x_snc_sagebrush.ai.fallback_provider', 'claude');
+        this.fbEnabled = gs.getProperty('x_snc_sagebrush.ai.fallback_enabled', 'true') === 'true';
+        this.timeoutMs = parseInt(gs.getProperty('x_snc_sagebrush.ai.timeout_ms', '30000'), 10);
+        this.maxTokens = parseInt(gs.getProperty('x_snc_sagebrush.ai.max_tokens', '4096'), 10);
         this.masker    = new SAGEBRUSHDataMasker();
     },
 
@@ -57,7 +57,7 @@ SAGEBRUSHAIProvider.prototype = {
      * @returns {Boolean}
      */
     _isDomainLicensed: function(domain) {
-        var licensed = gs.getProperty('x_sagebrush.ai.nowassist.licensed_domains', 'itsm,csm,hrsd');
+        var licensed = gs.getProperty('x_snc_sagebrush.ai.nowassist.licensed_domains', 'itsm,csm,hrsd');
         return licensed.split(',').indexOf(domain.toLowerCase()) !== -1;
     },
 
@@ -85,7 +85,7 @@ SAGEBRUSHAIProvider.prototype = {
                 context: context || {},
                 domain: domain
             };
-            var response = sn_now_assist.NowAssistSkillAPI.invoke('x_sagebrush.SAGEBRUSH', skillInput);
+            var response = sn_now_assist.NowAssistSkillAPI.invoke('x_snc_sagebrush.SAGEBRUSH', skillInput);
             if (response && response.output) {
                 return { success: true, text: response.output, provider: 'nowassist', tokens: response.token_count || 0 };
             }
@@ -97,22 +97,22 @@ SAGEBRUSHAIProvider.prototype = {
     },
 
     _callClaude: function(prompt, context) {
-        var apiKey = gs.getProperty('x_sagebrush.ai.claude.api_key', '');
+        var apiKey = gs.getProperty('x_snc_sagebrush.ai.claude.api_key', '');
         if (!apiKey || apiKey.length === 0) {
             this.log.warn('Claude API key not configured.');
             return { success: false, text: '', provider: 'claude', tokens: 0 };
         }
 
-        var sendRecordData = gs.getProperty('x_sagebrush.ai.external.send_record_data', 'false') === 'true';
+        var sendRecordData = gs.getProperty('x_snc_sagebrush.ai.external.send_record_data', 'false') === 'true';
         var safeContext = sendRecordData ? context : (this.masker.mask(context || {}).maskedData);
 
         try {
-            var rm = new sn_ih.RESTMessage('x_sagebrush.claude', 'ask');
+            var rm = new sn_ih.RESTMessage('x_snc_sagebrush.claude', 'ask');
             rm.setRequestHeader('x-api-key', apiKey);
             rm.setRequestHeader('anthropic-version', '2023-06-01');
             rm.setRequestHeader('content-type', 'application/json');
 
-            var model = gs.getProperty('x_sagebrush.ai.claude.model', 'claude-opus-4-6');
+            var model = gs.getProperty('x_snc_sagebrush.ai.claude.model', 'claude-opus-4-6');
             var body = JSON.stringify({
                 model: model,
                 max_tokens: this.maxTokens,
@@ -139,21 +139,21 @@ SAGEBRUSHAIProvider.prototype = {
     },
 
     _callOpenAI: function(prompt, context) {
-        var apiKey = gs.getProperty('x_sagebrush.ai.openai.api_key', '');
+        var apiKey = gs.getProperty('x_snc_sagebrush.ai.openai.api_key', '');
         if (!apiKey || apiKey.length === 0) {
             this.log.warn('OpenAI API key not configured.');
             return { success: false, text: '', provider: 'openai', tokens: 0 };
         }
 
-        var sendRecordData = gs.getProperty('x_sagebrush.ai.external.send_record_data', 'false') === 'true';
+        var sendRecordData = gs.getProperty('x_snc_sagebrush.ai.external.send_record_data', 'false') === 'true';
         var safeContext = sendRecordData ? context : (this.masker.mask(context || {}).maskedData);
 
         try {
-            var rm = new sn_ih.RESTMessage('x_sagebrush.openai', 'ask');
+            var rm = new sn_ih.RESTMessage('x_snc_sagebrush.openai', 'ask');
             rm.setRequestHeader('Authorization', 'Bearer ' + apiKey);
             rm.setRequestHeader('content-type', 'application/json');
 
-            var model = gs.getProperty('x_sagebrush.ai.openai.model', 'gpt-4o');
+            var model = gs.getProperty('x_snc_sagebrush.ai.openai.model', 'gpt-4o');
             var body = JSON.stringify({
                 model: model,
                 max_tokens: this.maxTokens,
@@ -181,7 +181,7 @@ SAGEBRUSHAIProvider.prototype = {
 
     _logCall: function(result, domain, durationMs) {
         try {
-            var aiLog = new GlideRecord('x_sagebrush_ai_log');
+            var aiLog = new GlideRecord('x_snc_sagebrush_ai_log');
             aiLog.initialize();
             aiLog.setValue('provider', result.provider || this.provider);
             aiLog.setValue('domain', domain || '');

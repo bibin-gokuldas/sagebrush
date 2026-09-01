@@ -1,16 +1,16 @@
 {
   "_meta": {
     "description": "SAGEBRUSH Dialogflow CX Agent — import via Google Cloud Console > Dialogflow CX > Restore Agent",
-    "webhook_url": "https://bibingokuldas.service-now.com/api/x_sagebrush/dialogflow_webhook",
+    "webhook_url": "https://bibingokuldas.service-now.com/api/x_snc_sagebrush/dialogflow_webhook",
     "webhook_secret_header": "X-Webhook-Secret",
-    "webhook_secret_property": "x_sagebrush.dialogflow.webhook_secret",
+    "webhook_secret_property": "x_snc_sagebrush.dialogflow.webhook_secret",
     "setup_steps": [
       "1. Create a Dialogflow CX agent in Google Cloud Console (us-central1 recommended for AU latency)",
       "2. Enable the Phone Gateway integration and obtain a phone number",
       "3. Import this file via Agents > Restore",
       "4. Create a webhook named 'sagebrush-webhook' pointing to the URL above",
-      "5. Add X-Webhook-Secret header matching the value you set in x_sagebrush.dialogflow.webhook_secret property",
-      "6. Set x_sagebrush.voice.provider = dialogflow in ServiceNow system properties",
+      "5. Add X-Webhook-Secret header matching the value you set in x_snc_sagebrush.dialogflow.webhook_secret property",
+      "6. Set x_snc_sagebrush.voice.provider = dialogflow in ServiceNow system properties",
       "7. Test by calling the phone number and saying 'SAGEBRUSH'"
     ]
   },
@@ -174,10 +174,10 @@
     {
       "displayName": "sagebrush-webhook",
       "genericWebService": {
-        "uri": "https://bibingokuldas.service-now.com/api/x_sagebrush/dialogflow_webhook",
+        "uri": "https://bibingokuldas.service-now.com/api/x_snc_sagebrush/dialogflow_webhook",
         "requestHeaders": {
           "Content-Type": "application/json",
-          "X-Webhook-Secret": "<SET_FROM_x_sagebrush.dialogflow.webhook_secret_PROPERTY>"
+          "X-Webhook-Secret": "<SET_FROM_x_snc_sagebrush.dialogflow.webhook_secret_PROPERTY>"
         },
         "httpMethod": "POST"
       },

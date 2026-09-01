@@ -1,5 +1,5 @@
 {
-  "name": "x_sagebrush_session",
+  "name": "x_snc_sagebrush_session",
   "label": "SAGEBRUSH Session",
   "extends": "task",
   "fields": [

@@ -2,7 +2,7 @@
   "name": "SAGEBRUSH_DQScore_ByDomain",
   "label": "SAGEBRUSH — DQ Score by Domain",
   "description": "Data Quality score broken down by ServiceNow domain",
-  "source_table": "x_sagebrush_dq_run",
+  "source_table": "x_snc_sagebrush_dq_run",
   "aggregation": "AVG",
   "field": "dq_score",
   "breakdown_by": "domain",

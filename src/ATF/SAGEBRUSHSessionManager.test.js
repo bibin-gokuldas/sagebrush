@@ -20,6 +20,6 @@ var updatedSession = mgr.getSession(sessionId);
 gs.assertTrue(updatedSession.intent === 'solution_design', 'intent should be updated');
 
 // Cleanup
-var gr = new GlideRecord('x_sagebrush_session');
+var gr = new GlideRecord('x_snc_sagebrush_session');
 gr.get(sessionId);
 gr.deleteRecord();

@@ -2,7 +2,7 @@
  * @name SAGEBRUSHConversationHandler
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHConversationHandler = Class.create();
 SAGEBRUSHConversationHandler.prototype = {
@@ -11,7 +11,7 @@ SAGEBRUSHConversationHandler.prototype = {
     DATA_QUALITY_KEYWORDS:    ['data quality', 'dq', 'quality check', 'data check', 'check data', 'clean data', 'duplicate', 'missing data'],
 
     initialize: function(dependencies) {
-        this.log     = new GSLog('x_sagebrush.conversation', 'SAGEBRUSHConversationHandler');
+        this.log     = new GSLog('x_snc_sagebrush.conversation', 'SAGEBRUSHConversationHandler');
         this.ai      = (dependencies && dependencies.ai)      || new SAGEBRUSHAIProvider();
         this.session = (dependencies && dependencies.session) || new SAGEBRUSHSessionManager();
         this.auditor = (dependencies && dependencies.auditor) || new SAGEBRUSHAuditLogger();
@@ -26,7 +26,7 @@ SAGEBRUSHConversationHandler.prototype = {
      */
     handleInvocation: function(userId, channel) {
         var sessionId = this.session.createSession(userId, channel);
-        var greeting  = gs.getProperty('x_sagebrush.greeting.text',
+        var greeting  = gs.getProperty('x_snc_sagebrush.greeting.text',
             'Hi, I\'m SAGEBRUSH, your AI Architect Agent. I can help you with Solution Design or Data Quality Checks. What would you like to work on today?');
 
         this.auditor.log('invoked', 'SAGEBRUSH invoked via ' + channel, { sessionSysId: sessionId });

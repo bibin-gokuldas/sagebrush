@@ -1,6 +1,6 @@
 # SAGEBRUSH Architect Guide
 
-**Audience:** ServiceNow Architects/Developers with `x_sagebrush.architect` role
+**Audience:** ServiceNow Architects/Developers with `x_snc_sagebrush.architect` role
 **Short Description:** Using SAGEBRUSH for Solution Design and advanced DQ analysis
 
 ---
@@ -51,13 +51,13 @@ Result: "Found 3 critical issues: 8 risks have no linked control (sn_risk_risk �
 ## 4. Extending SAGEBRUSH
 
 ### Adding DQ Checks
-Insert a record into `x_sagebrush_dq_check`:
+Insert a record into `x_snc_sagebrush_dq_check`:
 - `check_type = query` (recommended) — write a GlideRecord query, set `target_table` and `check_query`
 - Set `severity`, `domain`, `dimension`, `message_template`
 - `check_type = script` is disabled (new Function prohibited) — use query type
 
 ### Adding OOB Capabilities
-Insert into `x_sagebrush_oob_capability` with `capability_name`, `description`, `priority_level`, `license_tier`, `keywords`
+Insert into `x_snc_sagebrush_oob_capability` with `capability_name`, `description`, `priority_level`, `license_tier`, `keywords`
 
 ### AI Provider
 All AI calls go through `SAGEBRUSHAIProvider.ask(prompt, context, domain)`.

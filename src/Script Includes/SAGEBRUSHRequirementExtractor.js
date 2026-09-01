@@ -2,15 +2,15 @@
  * @name SAGEBRUSHRequirementExtractor
  * @callable_from_other_scopes true
  * @access public
- * @scope x_sagebrush
+ * @scope x_snc_sagebrush
  */
 var SAGEBRUSHRequirementExtractor = Class.create();
 SAGEBRUSHRequirementExtractor.prototype = {
 
-    REQ_TABLE: 'x_sagebrush_requirement',
+    REQ_TABLE: 'x_snc_sagebrush_requirement',
 
     initialize: function(dependencies) {
-        this.log = new GSLog('x_sagebrush.requirements', 'SAGEBRUSHRequirementExtractor');
+        this.log = new GSLog('x_snc_sagebrush.requirements', 'SAGEBRUSHRequirementExtractor');
         this.ai  = (dependencies && dependencies.ai) || new SAGEBRUSHAIProvider();
     },
 

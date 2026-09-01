@@ -20,7 +20,7 @@ gs.assertTrue(playback.length > 0, 'playback should not be empty');
 gs.assertTrue(playback.indexOf('1.') !== -1 || playback.indexOf('1)') !== -1, 'playback should be numbered');
 
 // Test 3: confirmRequirement marks confirmed = true
-var req = new GlideRecord('x_sagebrush_requirement');
+var req = new GlideRecord('x_snc_sagebrush_requirement');
 req.addQuery('session', sessionId);
 req.setLimit(1);
 req.query();
@@ -30,7 +30,7 @@ var reqSysId = req.getValue('sys_id');
 var confirmed = extractor.confirmRequirement(reqSysId);
 gs.assertTrue(confirmed === true, 'confirmRequirement should return true');
 
-var updatedReq = new GlideRecord('x_sagebrush_requirement');
+var updatedReq = new GlideRecord('x_snc_sagebrush_requirement');
 updatedReq.get(reqSysId);
 gs.assertTrue(updatedReq.getValue('confirmed') === '1', 'confirmed field should be true');
 
