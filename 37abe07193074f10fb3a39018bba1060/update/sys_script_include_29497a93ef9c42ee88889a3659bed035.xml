@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_sagebrush.SAGEBRUSHDQRemediator</api_name>
+        <callers_access>caller_tracking</callers_access>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SAGEBRUSHDQRemediator</name>
+        <script><![CDATA[/**
+ * @name SAGEBRUSHDQRemediator
+ * @callable_from_other_scopes true
+ * @access public
+ * @scope x_snc_sagebrush
+ */
+var SAGEBRUSHDQRemediator = Class.create();
+SAGEBRUSHDQRemediator.prototype = {
+
+    RESULT_TABLE: 'x_snc_sagebrush_dq_result',
+
+    DOMAIN_GROUPS: {
+        'itsm':         'Service Desk',
+        'itom':         'CMDB Team',
+        'grc':          'Risk and Compliance',
+        'bcm':          'Business Continuity Team',
+        'csm':          'Customer Service Operations',
+        'hrsd':         'HR Operations',
+        'foundational': 'Platform Administration'
+    },
+
+    initialize: function(dependencies) {
+        this.log   = new GSLog('x_snc_sagebrush.dq.remediation', 'SAGEBRUSHDQRemediator');
+        this.ai    = (dependencies && dependencies.ai)    || new SAGEBRUSHAIProvider();
+        this.roles = (dependencies && dependencies.roles) || new SAGEBRUSHRoleHelper();
+    },
+
+    /**
+     * Generates role-appropriate remediation hint for a DQ result.
+     * Architect/Dev: technical detail. Admin: step-by-step. Viewer: plain language.
+     * @param {string} resultSysId - x_snc_sagebrush_dq_result sys_id
+     * @param {string} userId
+     * @returns {string}
+     */
+    getHint: function(resultSysId, userId) {
+        var userRole = this.roles.getUserRole(userId);
+        var result   = new GlideRecord(this.RESULT_TABLE);
+        if (!result.get(resultSysId)) { return 'Result not found.'; }
+
+        var message   = result.getValue('result_message') || '';
+        var table     = result.getValue('table_name')     || '';
+        var dimension = result.getValue('dimension')      || '';
+        var domain    = result.getValue('domain')         || '';
+
+        // Try to get AI-generated hint first (it may have been set at scan time)
+        var existingHint = result.getValue('remediation_hint') || '';
+        if (existingHint.length > 10) { return this._formatHintForRole(existingHint, userRole); }
+
+        // Generate hint via AI
+        var roleLabel    = userRole === 'architect' ? 'developer' : (userRole === 'admin' ? 'admin' : 'business user');
+        var roleInstruct = userRole === 'architect'
+            ? 'Include GlideRecord query example and fix script.'
+            : (userRole === 'admin'
+                ? 'Use plain language step-by-step instructions.'
+                : 'Explain in simple non-technical terms what the business user should do or who to contact.');
+        var prompt = 'You are a ServiceNow ' + roleLabel + '. ' +
+            'Provide a concise remediation hint for this data quality issue. ' +
+            'Issue: ' + message + '. Table: ' + table + '. Dimension: ' + dimension + '. Domain: ' + domain + '. ' +
+            roleInstruct;
+
+        var aiResult = this.ai.ask(prompt, {}, domain);
+        var hint = aiResult.success ? aiResult.text : 'Please review and update the record to resolve this data quality issue.';
+
+        // Cache hint on result record
+        result.setValue('remediation_hint', hint);
+        result.update();
+
+        return this._formatHintForRole(hint, userRole);
+    },
+
+    _formatHintForRole: function(hint, role) {
+        if (role === 'architect') { return hint; }
+        if (role === 'admin')     { return hint; }
+        // Viewer — truncate technical details
+        var lines = hint.split('\n');
+        return lines.slice(0, 3).join('\n');
+    },
+
+    type: 'SAGEBRUSHDQRemediator'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>29497a93ef9c42ee88889a3659bed035</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SAGEBRUSHDQRemediator</sys_name>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_script_include_29497a93ef9c42ee88889a3659bed035</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+    </sys_script_include>
+</record_update>

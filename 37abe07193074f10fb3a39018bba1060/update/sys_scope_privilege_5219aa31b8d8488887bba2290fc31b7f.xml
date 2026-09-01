@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <name>task_sla</name>
+        <operation>read</operation>
+        <privilege_type>table</privilege_type>
+        <scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</scope>
+        <status>allowed</status>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>5219aa31b8d8488887bba2290fc31b7f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_update_name>sys_scope_privilege_5219aa31b8d8488887bba2290fc31b7f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+        <target_scope>global</target_scope>
+    </sys_scope_privilege>
+</record_update>

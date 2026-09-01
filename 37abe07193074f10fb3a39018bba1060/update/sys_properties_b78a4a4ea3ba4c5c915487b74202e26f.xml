@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <description>Dialogflow CX webhook secret</description>
+        <name>x_snc_sagebrush.dialogflow_secret</name>
+        <private>true</private>
+        <read_roles/>
+        <suffix/>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>b78a4a4ea3ba4c5c915487b74202e26f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_properties_b78a4a4ea3ba4c5c915487b74202e26f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+        <type>password2</type>
+        <value></value>
+        <write_roles/>
+    </sys_properties>
+</record_update>

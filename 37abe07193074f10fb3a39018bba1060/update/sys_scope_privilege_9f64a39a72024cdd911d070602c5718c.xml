@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <name>sa_edge_service</name>
+        <operation>read</operation>
+        <privilege_type>table</privilege_type>
+        <scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</scope>
+        <status>allowed</status>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>9f64a39a72024cdd911d070602c5718c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_update_name>sys_scope_privilege_9f64a39a72024cdd911d070602c5718c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+        <target_scope>sn_itom_discovery</target_scope>
+    </sys_scope_privilege>
+</record_update>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_sagebrush.SAGEBRUSHDQEngine</api_name>
+        <callers_access>caller_tracking</callers_access>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SAGEBRUSHDQEngine</name>
+        <script><![CDATA[/**
+ * @name SAGEBRUSHDQEngine
+ * @callable_from_other_scopes true
+ * @access public
+ * @scope x_snc_sagebrush
+ */
+var SAGEBRUSHDQEngine = Class.create();
+SAGEBRUSHDQEngine.prototype = {
+
+    RUN_TABLE: 'x_snc_sagebrush_dq_run',
+
+    initialize: function(dependencies) {
+        this.log        = new GSLog('x_snc_sagebrush.dq', 'SAGEBRUSHDQEngine');
+        this.rules      = (dependencies && dependencies.rules)      || new SAGEBRUSHDQRuleEngine();
+        this.aiEngine   = (dependencies && dependencies.aiEngine)   || new SAGEBRUSHDQAIEngine();
+        this.scorer     = (dependencies && dependencies.scorer)     || new SAGEBRUSHDQScorer();
+        this.auditor    = (dependencies && dependencies.auditor)    || new SAGEBRUSHAuditLogger();
+        this.remediator = (dependencies && dependencies.remediator) || new SAGEBRUSHDQRemediator();
+    },
+
+    /**
+     * Starts a DQ run — creates run record, executes rules, AI analysis, scores.
+     * @param {string} sessionId - SAGEBRUSH session sys_id
+     * @param {string} domain - 'all' | 'itsm' | 'itom' | 'grc' | 'bcm' | 'csm' | 'hrsd' | 'foundational'
+     * @returns {string} runSysId
+     */
+    startRun: function(sessionId, domain) {
+        var runType = (domain === 'all') ? 'full' : 'domain';
+
+        var run = new GlideRecord(this.RUN_TABLE);
+        run.initialize();
+        run.setValue('run_type',     runType);
+        run.setValue('domain',       domain !== 'all' ? domain : '');
+        run.setValue('triggered_by', sessionId ? 'conversation' : 'scheduled');
+        run.setValue('session',      sessionId || '');
+        run.setValue('state',        'running');
+        var runId = run.insert();
+
+        this.auditor.log('dq_scan', 'DQ scan started: ' + domain, { sessionSysId: sessionId });
+
+        try {
+            var ruleResult  = (domain === 'all') ? this.rules.runAll(runId) : this.rules.runDomain(runId, domain);
+            var aiAnomalies = this.aiEngine.analyseRun(runId);
+            var scores      = this.scorer.scoreRun(runId);
+
+            // Update run with counts
+            run = new GlideRecord(this.RUN_TABLE);
+            run.get(runId);
+            run.setValue('state',        'complete');
+            run.setValue('checks_run',   ruleResult.checks_run);
+            run.setValue('issues_found', ruleResult.issues_found + aiAnomalies);
+            run.setValue('dq_score',     scores.overall);
+            run.update();
+
+            // Update severity counts via GlideAggregate
+            this._updateSeverityCounts(runId);
+        } catch (e) {
+            this.log.error('DQ run failed: ' + e.message);
+            run = new GlideRecord(this.RUN_TABLE);
+            run.get(runId);
+            run.setValue('state', 'failed');
+            run.update();
+        }
+
+        return runId;
+    },
+
+    /**
+     * Returns a role-appropriate DQ summary for conversational response.
+     * @param {string} runSysId
+     * @param {string} userId
+     * @returns {string}
+     */
+    getSummary: function(runSysId, userId) {
+        var roles    = new SAGEBRUSHRoleHelper();
+        var userRole = roles.getUserRole(userId);
+        var run      = new GlideRecord(this.RUN_TABLE);
+        if (!run.get(runSysId)) { return 'Data Quality run not found.'; }
+
+        var score    = parseFloat(run.getValue('dq_score') || '0');
+        var issues   = parseInt(run.getValue('issues_found') || '0', 10);
+        var critical = parseInt(run.getValue('critical_count') || '0', 10);
+        var domain   = run.getValue('domain') || 'all domains';
+
+        if (userRole === 'architect' || userRole === 'admin') {
+            return 'DQ Scan complete for ' + domain + '.\n' +
+                'Score: ' + score.toFixed(1) + '/100\n' +
+                'Total issues: ' + issues + ' (' + critical + ' critical)\n' +
+                'Results are in x_snc_sagebrush_dq_result. Would you like me to walk through the critical items?';
+        }
+
+        // Viewer / business stakeholder — plain language
+        var grade = score >= 90 ? 'Excellent' : (score >= 75 ? 'Good' : (score >= 60 ? 'Needs Attention' : 'Poor'));
+        return 'Your data quality for ' + domain + ' is rated ' + grade + ' (' + score.toFixed(0) + '/100). ' +
+            'There are ' + issues + ' items that need attention' +
+            (critical > 0 ? ', including ' + critical + ' that are urgent.' : '.');
+    },
+
+    _updateSeverityCounts: function(runId) {
+        var counts = { critical: 0, high: 0, medium: 0, low: 0 };
+
+        var agg = new GlideAggregate('x_snc_sagebrush_dq_result');
+        agg.addQuery('dq_run', runId);
+        agg.addAggregate('COUNT', 'severity');
+        agg.groupBy('severity');
+        agg.query();
+        while (agg.next()) {
+            var sev = agg.getValue('severity');
+            var cnt = parseInt(agg.getAggregate('COUNT', 'severity'), 10);
+            if (counts.hasOwnProperty(sev)) { counts[sev] = cnt; }
+        }
+
+        var run = new GlideRecord(this.RUN_TABLE);
+        if (run.get(runId)) {
+            run.setValue('critical_count', counts.critical);
+            run.setValue('high_count',     counts.high);
+            run.setValue('medium_count',   counts.medium);
+            run.setValue('low_count',      counts.low);
+            run.update();
+        }
+    },
+
+    type: 'SAGEBRUSHDQEngine'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-01 06:00:52</sys_created_on>
+        <sys_id>a4f26da5fac54f6fbf415206a9fb3af4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SAGEBRUSHDQEngine</sys_name>
+        <sys_package display_value="Sagebrush" source="x_snc_sagebrush">37abe07193074f10fb3a39018bba1060</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Sagebrush">37abe07193074f10fb3a39018bba1060</sys_scope>
+        <sys_update_name>sys_script_include_a4f26da5fac54f6fbf415206a9fb3af4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-01 06:00:52</sys_updated_on>
+    </sys_script_include>
+</record_update>
